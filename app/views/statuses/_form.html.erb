@@ -11,8 +11,9 @@
     </div>
   <% end %>
 
- <%= f.input :user_id %>
+ <%= f.association :user, collection: User.all, prompt: "Choose a User", label_method: :profile_name, value_method: :id %>
  <%= f.input :content %>
+
  <div class="form-actions">
    <%= f.button :submit %>
   </div>
