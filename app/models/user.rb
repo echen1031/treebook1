@@ -9,6 +9,14 @@ class User < ActiveRecord::Base
                   :first_name, :last_name, :profile_name
   # attr_accessible :title, :body
 
+  validates_presence_of :first_name, :last_name
+  validates :profile_name, presence: true, 
+                           uniqueness: true,
+                           format: {
+                             with: /a-zA-Z0-9_-/,
+                             message: 'Must be formatted correctly.'
+                           }
+
   
   def full_name
     first_name + " " + last_name
